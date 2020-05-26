@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import FecthBooks from './books';
 
 export default combineReducers({
-  as: () => 123,
+  books: FecthBooks,
 });
