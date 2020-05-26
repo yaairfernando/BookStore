@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import PropType from 'prop-types';
 
 import BooksList from './BooksList';
-import BooksForm from './BooksForm';
+import BookForm from './BooksForm';
 
 export default class App extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ export default class App extends Component {
     return (
       <div>
         <BooksList />
-        <BooksForm />
+        <BookForm />
       </div>
     );
   }

@@ -1,51 +1,64 @@
 import React, { Component } from 'react';
-import PropType from 'prop-types';
-import { createBook } from '../actions'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createBook } from '../actions';
 
-const categories = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"]
+const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
-class BooksForm extends Component {
-  state = {
-    input: ''
+class BookForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onHandleSubmit = (e) => {
-    console.log("SUBMIT")
+  handleSubmit(e) {
+    const { props: { createBook }, state: { value } } = this;
+    const input = document.getElementsByName('title')[0];
+    input.value = '';
     e.preventDefault();
     const book = {
       id: Math.random(),
-      title: this.state.input,
-      category: 'Action'
-    }
-    this.props.createBook(book);
+      title: value,
+      category: 'Action',
+    };
+    createBook(book);
   }
 
-  onHandleSelect = (e) => {
-    
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
 
   render() {
+    const { state: { value } } = this;
     return (
-      <form onSubmit={(e) => this.onHandleSubmit(e)}>
+      <form onSubmit={e => this.handleSubmit(e)}>
         <div className="form-group">
-          <label>
+          <label htmlFor="title">
             Title:
-            <input type="text" value={this.state.input} onChange={(e) => this.setState({ input: e.target.value })} />
+            <input type="text" value={value} onChange={this.handleChange} name="title" />
           </label>
         </div>
         <div className="form-group">
-          <label>Categories:</label>
-          <select>
-            {categories.map((c, index) => {
-              return <option onChange={(e) => this.onHandleSelect(e)} key={`select-${index}`}>{c}</option>
-            })}
-          </select>
+          <label htmlFor="categories">
+            Categories:
+            <select name="categories">
+              {categories.map(c => <option onChange={e => this.onHandleSelect(e)} key={`select-${c}`}>{c}</option>)}
+            </select>
+          </label>
+
         </div>
-        <button>Add Button</button>
+        <button type="submit">Add Button</button>
       </form>
     );
   }
 }
 
-export default connect(null, { createBook })(BooksForm);
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
+
+
+export default connect(null, { createBook })(BookForm);
