@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const ListOfBooks = args => {
-  console.log(args.books.state);
   const { books: { state } } = args;
   const content = [];
   Object.keys(state).forEach(book => {
-    console.log(state[book].id);
-
     content.push(
       <tr>
         <th>{state[book].id}</th>
