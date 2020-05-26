@@ -1,7 +1,7 @@
 import * as types from './actionsType';
 
 export const fecthBooks = () => ({
-  type: types.FETCH_BOOK,
+  type: 'FETCH_BOOKS',
 });
 
 export const createBook = book => {

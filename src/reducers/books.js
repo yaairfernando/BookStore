@@ -19,15 +19,10 @@ const initState = {
 };
 
 export default (state = initState, action) => {
-  switch (action.types) {
-    case types.FETCH_BOOK:
-      console.log("FETCH BOOKS");
-      return { ...state };
-      break;
+  switch (action.type) {
     case 'CREATE_BOOK':
       console.log("ACTION PAYLOAD from reducer: ", action.payload);
-      const id = action.payload.id;
-      return {...state, [action.payload.id]: [action.payload]}
+      return {...state, [action.payload.id]: action.payload}
       break;
     default:
       return state;
