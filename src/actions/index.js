@@ -4,12 +4,15 @@ export const fecthBooks = () => ({
   type: types.FETCH_BOOK,
 });
 
-export const addBook = book => ({
-  type: types.ADD_BOOK,
-  book,
-});
+export const createBook = book => {
+  console.log("ACTION CREATOR: ", book);
+  return {
+    type: 'CREATE_BOOK',
+    payload: book
+  }
+};
 
-export const removeBook = book => ({
+export const removeBook = id => ({
   type: types.REMOVE_BOOK,
-  id: book.id,
+  payload: id,
 });

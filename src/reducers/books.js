@@ -1,29 +1,35 @@
 import * as types from '../actions/actionsType';
 
 const initState = {
-  books1: {
-    id: 1,
+  1: {
+    id: Math.random(),
     title: 'test1',
-    content: 'test1Content',
+    category: 'test1Content',
   },
-  books2: {
-    id: 2,
+  2: {
+    id: Math.random(),
     title: 'test2',
-    content: 'test2Content',
+    category: 'test2Content',
   },
-  books3: {
-    id: 3,
+  3: {
+    id: Math.random(),
     title: 'test3',
-    content: 'test3Content',
+    category: 'test3Content',
   },
 };
 
 export default (state = initState, action) => {
   switch (action.types) {
     case types.FETCH_BOOK:
-      return { state };
-
+      console.log("FETCH BOOKS");
+      return { ...state };
+      break;
+    case 'CREATE_BOOK':
+      console.log("ACTION PAYLOAD from reducer: ", action.payload);
+      const id = action.payload.id;
+      return {...state, [action.payload.id]: [action.payload]}
+      break;
     default:
-      return { state };
+      return state;
   }
 };

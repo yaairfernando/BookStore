@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const ListOfBooks = args => {
+const Book = args => {
   const { books: { state } } = args;
   const content = [];
   Object.keys(state).forEach(book => {
     content.push(
-      <tr>
+      <tr key={state[book].id}>
         <th>{state[book].id}</th>
         <th>{state[book].title}</th>
-        <th>{state[book].content}</th>
+        <th>{state[book].category}</th>
       </tr>,
     );
   });
@@ -38,7 +38,7 @@ class BooksList extends Component {
           </tr>
         </thead>
         <tbody>
-          <ListOfBooks books={this.Books} />
+          <Book books={this.Books} />
         </tbody>
       </table>
     );
