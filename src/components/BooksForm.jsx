@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropType from 'prop-types';
 
-import BooksList from './BooksList';
-import BooksForm from './BooksForm';
-
-export default class App extends Component {
+export default class BooksForm extends Component {
   constructor(props) {
     super(props);
     this.test = '';
@@ -13,8 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <BooksList />
-        <BooksForm />
+        {}
       </div>
     );
   }
