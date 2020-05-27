@@ -13,9 +13,9 @@ export default class Book extends Component {
     return (
       <tr>
         <th>{id}</th>
-        <th>{title}</th>
-        <th>{category}</th>
-        <th>
+        <th className="category">{category}</th>
+        <th className="title">{title}</th>
+        <th className="button">
           <button onClick={() => handleRemoveBook(book)} type="button">Delete</button>
         </th>
       </tr>

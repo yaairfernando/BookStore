@@ -12,7 +12,7 @@ const CategoryFilter = props => {
 
 
   return (
-    <select name="categories" onChange={e => onHandleChange(e)}>
+    <select className="filter" name="categories" onChange={e => onHandleChange(e)}>
       {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
     </select>
   );
