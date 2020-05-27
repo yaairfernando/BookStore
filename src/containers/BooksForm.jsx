@@ -24,7 +24,7 @@ class BookForm extends Component {
       category,
     };
     createBook(book);
-    this.setState({ title: '' })
+    this.setState({ title: '' });
   }
 
   handleChange(event) {

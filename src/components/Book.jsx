@@ -8,7 +8,7 @@ export default class Book extends Component {
   }
 
   render() {
-    const { props: { book: { id, title, category } } } = this;
+    const { props: { book: { id, title, category }, handleRemoveBook } } = this;
     const { book } = this.props;
     return (
       <tr>
@@ -16,7 +16,7 @@ export default class Book extends Component {
         <th>{title}</th>
         <th>{category}</th>
         <th>
-          <button onClick={() => this.props.handleRemoveBook(book)}>Delete</button>
+          <button onClick={() => handleRemoveBook(book)} type="button">Delete</button>
         </th>
       </tr>
     );
@@ -25,4 +25,5 @@ export default class Book extends Component {
 
 Book.propTypes = {
   book: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleRemoveBook: PropTypes.func.isRequired,
 };
