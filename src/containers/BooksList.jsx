@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeBook } from '../actions'
+import { removeBook } from '../actions';
 
 import Book from '../components/Book';
 
-class BooksList extends Component {
+class BookList extends Component {
   constructor(props) {
     super(props);
     this.test = '';
+
+    this.removeBook = props.removeBook.bind(this);
   }
 
-  handleRemoveBook = (book) => {
-    // console.log("REMOVE BOOK FROM HANDLE REMOVE BOOK, ", book);
-    this.props.removeBook(book);
+  handleRemoveBook(book) {
+    this.removeBook(book);
   }
 
   render() {
@@ -40,11 +41,12 @@ class BooksList extends Component {
   }
 }
 
-BooksList.propTypes = {
+BookList.propTypes = {
   books: PropTypes.objectOf(PropTypes.object).isRequired,
+  removeBook: PropTypes.func.isRequired,
 };
 
 const MapStateToProps = state => ({
   books: state.books,
 });
-export default connect(MapStateToProps, { removeBook })(BooksList);
+export default connect(MapStateToProps, { removeBook })(BookList);
