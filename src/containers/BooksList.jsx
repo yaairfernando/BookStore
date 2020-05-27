@@ -12,10 +12,7 @@ class BooksList extends Component {
 
   render() {
     const { props: { books } } = this;
-    const bookArr = [];
-    Object.keys(books).forEach(book => {
-      bookArr.push(<Book book={books[book]} key={`Book-${books[book].id}`} />);
-    });
+    const bookList = books.map(b => <Book book={b} key={`Book-${b.title}`} />);
     return (
       <table>
         <thead>
@@ -26,7 +23,7 @@ class BooksList extends Component {
           </tr>
         </thead>
         <tbody>
-          {bookArr}
+          {bookList}
         </tbody>
       </table>
     );
@@ -34,7 +31,7 @@ class BooksList extends Component {
 }
 
 BooksList.propTypes = {
-  books: PropTypes.objectOf(PropTypes.object).isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const MapStateToProps = state => ({
