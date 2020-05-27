@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeBook } from '../actions'
 
 import Book from '../components/Book';
 
@@ -10,11 +11,16 @@ class BooksList extends Component {
     this.test = '';
   }
 
+  handleRemoveBook = (book) => {
+    // console.log("REMOVE BOOK FROM HANDLE REMOVE BOOK, ", book);
+    this.props.removeBook(book);
+  }
+
   render() {
     const { props: { books } } = this;
     const bookArr = [];
     Object.keys(books).forEach(book => {
-      bookArr.push(<Book book={books[book]} key={`Book-${books[book].id}`} />);
+      bookArr.push(<Book book={books[book]} handleRemoveBook={this.handleRemoveBook} key={`Book-${books[book].id}`} />);
     });
     return (
       <table>
@@ -23,6 +29,7 @@ class BooksList extends Component {
             <th>Book ID</th>
             <th>Title</th>
             <th>Category</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -40,4 +47,4 @@ BooksList.propTypes = {
 const MapStateToProps = state => ({
   books: state.books,
 });
-export default connect(MapStateToProps)(BooksList);
+export default connect(MapStateToProps, { removeBook })(BooksList);

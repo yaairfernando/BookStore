@@ -9,11 +9,15 @@ export default class Book extends Component {
 
   render() {
     const { props: { book: { id, title, category } } } = this;
+    const { book } = this.props;
     return (
       <tr>
         <th>{id}</th>
         <th>{title}</th>
         <th>{category}</th>
+        <th>
+          <button onClick={() => this.props.handleRemoveBook(book)}>Delete</button>
+        </th>
       </tr>
     );
   }
