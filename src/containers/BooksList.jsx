@@ -10,14 +10,19 @@ class BookList extends Component {
     super(props);
     this.test = '';
 
-    this.removeBook = props.removeBook.bind(this);
+    this.handleRemoveBook = this.handleRemoveBook.bind(this);
+  }
+
+  handleRemoveBook(book) {
+    const { props: { removeBook } } = this;
+    removeBook(book);
   }
 
   render() {
     const { props: { books } } = this;
     const bookArr = [];
     Object.keys(books).forEach(book => {
-      bookArr.push(<Book book={books[book]} handleRemoveBook={this.removeBook} key={`Book-${books[book].id}`} />);
+      bookArr.push(<Book book={books[book]} handleRemoveBook={this.handleRemoveBook} key={`Book-${books[book].id}`} />);
     });
     return (
       <table>
