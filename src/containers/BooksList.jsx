@@ -12,7 +12,8 @@ class BookList extends Component {
   }
 
   handleRemoveBook(book) {
-    this.props.removeBook(book);
+    [ removeBook ] = this.props;
+    removeBook(book);
   }
 
   render() {
