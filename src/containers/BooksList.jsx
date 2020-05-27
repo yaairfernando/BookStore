@@ -20,8 +20,14 @@ class BookList extends Component {
   }
 
   render() {
-    const { props: { books } } = this;
+    const { props: { books, category } } = this;
     const book = books.map(b => <Book book={b} handleRemoveBook={this.handleRemoveBook} key={`Book-${b.id}`} />);
+    const filterdBooks = book.filter(e => {
+      if (category !== 'All' && category !== '') {
+        return e.props.book.category === category;
+      }
+      return book;
+    });
     return (
       <div>
         <CategoryFilter />
@@ -35,7 +41,7 @@ class BookList extends Component {
             </tr>
           </thead>
           <tbody>
-            {book}
+            { filterdBooks }
           </tbody>
         </table>
       </div>
@@ -46,9 +52,11 @@ class BookList extends Component {
 BookList.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
   removeBook: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 const MapStateToProps = state => ({
   books: state.books,
+  category: state.filter,
 });
 export default connect(MapStateToProps, { removeBook })(BookList);
