@@ -8,44 +8,49 @@ const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learnin
 class BookForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { title: '', category: 'Action' };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.inputHandleChange = this.inputHandleChange.bind(this);
+    this.selectHandleChange = this.selectHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    const { props: { createBook }, state: { value } } = this;
+    const { props: { createBook }, state: { title, category } } = this;
     const input = document.getElementsByName('title')[0];
     input.value = '';
     e.preventDefault();
     const book = {
-      id: Math.random(),
-      title: value,
-      category: 'Action',
+      id: Math.random().toString(),
+      title,
+      category,
     };
     createBook(book);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  inputHandleChange(event) {
+    this.setState({ title: event.target.value });
+  }
+
+  selectHandleChange(event) {
+    this.setState({ category: event.target.value });
   }
 
   render() {
-    const { state: { value } } = this;
+    const { state: { title } } = this;
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <div className="form-group">
           <label htmlFor="title">
             Title:
-            <input type="text" value={value} onChange={this.handleChange} name="title" />
+            <input type="text" value={title} onChange={this.inputHandleChange} name="title" />
           </label>
         </div>
         <div className="form-group">
           <label htmlFor="categories">
             Categories:
-            <select name="categories">
-              {categories.map(c => <option onChange={e => this.onHandleSelect(e)} key={`select-${c}`}>{c}</option>)}
+            <select name="categories" onChange={e => this.selectHandleChange(e)}>
+              {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
             </select>
           </label>
 

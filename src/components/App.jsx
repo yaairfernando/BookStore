@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import BooksList from './BooksList';
-import BookForm from './BooksForm';
+import BooksList from '../containers/BooksList';
+import BookForm from '../containers/BooksForm';
 
 export default class App extends Component {
   constructor(props) {

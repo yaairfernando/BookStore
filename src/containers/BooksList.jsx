@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Book = books => {
-  const { book } = books;
-  return (
-    <tr>
-      <th>{book.id}</th>
-      <th>{book.title}</th>
-      <th>{book.category}</th>
-    </tr>
-  );
-};
+import Book from '../components/Book';
 
 class BooksList extends Component {
   constructor(props) {
@@ -19,13 +10,12 @@ class BooksList extends Component {
     this.test = '';
   }
 
-  renderBooks() {
-    const { props: { books } } = this;
-    const tempBook = Object.values(books);
-    return tempBook.map(book => <Book book={book} key={book.id} />);
-  }
-
   render() {
+    const { props: { books } } = this;
+    const bookArr = [];
+    Object.keys(books).forEach(book => {
+      bookArr.push(<Book book={books[book]} key={`Book-${books[book].id}`} />);
+    });
     return (
       <table>
         <thead>
@@ -36,7 +26,7 @@ class BooksList extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.renderBooks()}
+          {bookArr}
         </tbody>
       </table>
     );
