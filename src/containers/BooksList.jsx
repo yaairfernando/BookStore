@@ -10,12 +10,10 @@ class BookList extends Component {
   constructor(props) {
     super(props);
     this.test = '';
-    console.log("CONSTRUCTOR")
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
   }
 
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT")
   }
 
   handleRemoveBook(book) {
@@ -24,7 +22,6 @@ class BookList extends Component {
   }
 
   render() {
-    console.log("RENDER")
     const { props: { books, category } } = this;
     const book = books.map(b => <Book book={b} handleRemoveBook={this.handleRemoveBook} key={`Book-${b.id}`} />);
     const filterdBooks = book.filter(e => {
