@@ -1,11 +1,10 @@
 import * as types from '../actions/actionsType';
 
-export default (state='', action) => {
-  console.log("STATE:", state);
+
+export default (state = '', action) => {
   switch (action.type) {
-    case 'CHANGE_FILTER':
-      let new_state = action.apyload
-      return new_state;
+    case types.CHANGE_FILTER:
+      return action.payload;
     default:
       return state;
   }

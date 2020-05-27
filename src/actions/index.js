@@ -10,10 +10,7 @@ export const removeBook = book => ({
   payload: book,
 });
 
-export const categoryFilter = category => {
-  console.log("ACTION CREATOR: ", category);
-  return {
-    type: 'CHANGE_FILTER',
-    payload: category
-  }
-};
+export const categoryFilter = category => ({
+  type: types.CHANGE_FILTER,
+  payload: category,
+});
