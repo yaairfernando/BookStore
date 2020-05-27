@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeBook } from '../actions';
+import CategoryFilter from '../components/CategoryFilter';
 
 import Book from '../components/Book';
 
@@ -25,19 +26,22 @@ class BookList extends Component {
       bookArr.push(<Book book={books[book]} handleRemoveBook={this.handleRemoveBook} key={`Book-${books[book].id}`} />);
     });
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Book ID</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookArr}
-        </tbody>
-      </table>
+      <>
+        <CategoryFilter />
+        <table>
+          <thead>
+            <tr>
+              <th>Book ID</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookArr}
+          </tbody>
+        </table>
+      </>
     );
   }
 }
