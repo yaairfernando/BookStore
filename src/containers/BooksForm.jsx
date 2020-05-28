@@ -16,7 +16,6 @@ class BookForm extends Component {
 
   componentDidMount() {
     const select = document.getElementsByTagName('select');
-    console.log(select);
 
     Object.keys(select).forEach(e => {
       select[e].onchange = () => {
