@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export default class Book extends Component {
   constructor(props) {
     super(props);
-    this.test = '';
   }
 
   render() {
