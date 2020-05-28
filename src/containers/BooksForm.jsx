@@ -11,7 +11,6 @@ class BookForm extends Component {
     this.state = { title: '', category: 'Action' };
 
     this.handleChange = this.handleChange.bind(this);
-    this.selectHandleChange = this.selectHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

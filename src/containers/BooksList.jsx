@@ -12,16 +12,13 @@ class BookList extends Component {
   }
 
   handleRemoveBook(book) {
-    [removeBook] = this.props;
+    const { props: { removeBook } } = this;
     removeBook(book);
   }
 
   render() {
     const { props: { books } } = this;
-    const bookArr = [];
-    Object.keys(books).forEach(book => {
-      bookArr.push(<Book book={books[book]} handleRemoveBook={this.handleRemoveBook} key={`Book-${books[book].id}`} />);
-    });
+    const book = books.map(b => <Book book={b} handleRemoveBook={this.handleRemoveBook} key={`Book-${b.id}`} />);
     return (
       <table>
         <thead>
@@ -33,7 +30,7 @@ class BookList extends Component {
           </tr>
         </thead>
         <tbody>
-          {bookArr}
+          {book}
         </tbody>
       </table>
     );
@@ -41,7 +38,7 @@ class BookList extends Component {
 }
 
 BookList.propTypes = {
-  books: PropTypes.objectOf(PropTypes.object).isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
   removeBook: PropTypes.func.isRequired,
 };
 
