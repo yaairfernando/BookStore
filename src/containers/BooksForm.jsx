@@ -33,14 +33,14 @@ class BookForm extends Component {
   render() {
     const { state: { title } } = this;
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
-        <div className="form-group">
+      <form onSubmit={e => this.handleSubmit(e)} className="formContainer">
+        <div className="formBook">
           <label htmlFor="title">
             Title:
             <input type="text" value={title} onChange={this.handleChange} name="title" />
           </label>
         </div>
-        <div className="form-group">
+        <div className="formBook">
           <label htmlFor="categories">
             Categories:
             <select name="category" onChange={e => this.handleChange(e)}>
