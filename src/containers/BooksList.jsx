@@ -9,7 +9,6 @@ import Book from '../components/Book';
 class BookList extends Component {
   constructor(props) {
     super(props);
-    this.test = '';
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
   }
 

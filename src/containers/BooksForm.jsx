@@ -11,7 +11,6 @@ class BookForm extends Component {
     this.state = { title: '', category: 'Action' };
 
     this.handleChange = this.handleChange.bind(this);
-    this.selectHandleChange = this.selectHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -28,26 +27,30 @@ class BookForm extends Component {
   }
 
   handleChange(event) {
-    this.setState({ title: event.target.value });
-  }
-
-  selectHandleChange(event) {
-    this.setState({ category: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
     const { state: { title } } = this;
     return (
-      <div className="formContainer">
-        <h2>Add new Book</h2>
-        <form onSubmit={e => this.handleSubmit(e)} className="formBook">
-          <input type="text" value={title} onChange={this.handleChange} name="title" />
-          <select name="categories" onChange={e => this.selectHandleChange(e)}>
-            {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
-          </select>
-          <button type="submit">Add Button</button>
-        </form>
-      </div>
+      <form onSubmit={e => this.handleSubmit(e)}>
+        <div className="form-group">
+          <label htmlFor="title">
+            Title:
+            <input type="text" value={title} onChange={this.handleChange} name="title" />
+          </label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="categories">
+            Categories:
+            <select name="category" onChange={e => this.handleChange(e)}>
+              {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
+            </select>
+          </label>
+
+        </div>
+        <button type="submit">Add Button</button>
+      </form>
     );
   }
 }
