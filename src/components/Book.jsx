@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({handleRemoveBook, book}) => {
+const Book = ({ handleRemoveBook, book }) => {
   const { id, title, category } = book;
   return (
     <tr>
@@ -13,7 +13,7 @@ const Book = ({handleRemoveBook, book}) => {
       </th>
     </tr>
   );
-}
+};
 
 Book.propTypes = {
   book: PropTypes.objectOf(PropTypes.string).isRequired,
