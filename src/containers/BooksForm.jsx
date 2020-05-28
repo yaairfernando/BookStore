@@ -32,10 +32,10 @@ class BookForm extends Component {
     e.preventDefault();
 
     const { props: { createBook }, state: { title, category } } = this;
-    const element = document.getElementsByTagName('select')[1]
-    console.log(element.value);
-    if (!title && element.value !== 'Select a Category') {
-      this.setState({ error: "Please enter a valid title and select a category"})
+    const element = document.getElementsByTagName('select')[1];
+
+    if (title === '' || element.value === 'Category') {
+      this.setState({ error: 'Please enter a valid title and select a category' });
       return;
     }
     const book = {
