@@ -8,6 +8,6 @@ const App = () => (
     <BookList />
     <BookForm />
   </div>
-)
+);
 
 export default App;
