@@ -14,6 +14,21 @@ class BookForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const select = document.getElementsByTagName('select');
+    console.log(select);
+
+    Object.keys(select).forEach(e => {
+      select[e].onchange = () => {
+        if (select[e].value !== 'Category' && select[e].value !== 'All') {
+          select[e].classList.add('toggle');
+        } else {
+          select[e].classList.remove('toggle');
+        }
+      };
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const { props: { createBook }, state: { title, category } } = this;
@@ -36,18 +51,16 @@ class BookForm extends Component {
       <form onSubmit={e => this.handleSubmit(e)} className="formContainer">
         <div className="formBook">
           <label htmlFor="title">
-            Title:
-            <input type="text" value={title} onChange={this.handleChange} name="title" />
+            <input type="text" value={title} onChange={this.handleChange} name="title" placeholder="Title" />
           </label>
         </div>
         <div className="formBook">
           <label htmlFor="categories">
-            Categories:
             <select name="category" onChange={e => this.handleChange(e)}>
+              <option value="Category">Category</option>
               {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
             </select>
           </label>
-
         </div>
         <button type="submit">Add Button</button>
       </form>

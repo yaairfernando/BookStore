@@ -2,6 +2,63 @@ body {
   background-color: #f5f6fa;
 }
 
+header {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+
+  h1,
+  h4 {
+    align-self: center;
+  }
+
+  h1 {
+      width: 240px;
+      height: 37px;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #0290ff;
+  }
+
+  .book {
+    margin-left: 41px;
+      width: 59px;
+      height: 16px;
+      font-family: Montserrat;
+      font-size: 13px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.9px;
+      color: var(--black-three);
+      text-transform: uppercase;
+  }
+
+  .category {
+    margin-left: 41px;
+      width: 105px;
+      height: 16px;
+      opacity: 0.5;
+      font-family: Montserrat;
+      font-size: 13px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.9px;
+      color: var(--black-three);
+      text-transform: uppercase;
+  }
+}
+
 .wrapper {
   max-width: 1200px;
   margin: auto;
@@ -23,10 +80,10 @@ body {
   }
 }
 
-
 .formContainer {
   border-top: solid 1px #e8e8e8;
   padding-top: 40px;
+  display: flex;
 
   h2 {
     width: 174px;
@@ -56,23 +113,36 @@ body {
     input {
       width: 664px;
       height: 45px;
+      font-family: Montserrat;
+      padding-left: 20px;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      font-family: Arial;
+      color: black;
+      letter-spacing: -0.15px;
+
+      &::placeholder {
+        color: #c4c4c4;
+      }
     }
   
     select {
       width: 285px;
       height: 45px;
     }
-  
-    button {
-      width: 184px;
-      height: 45px;
-      border-radius: 3px;
-      background-color: #0290ff;
-      color: #fff;
-      border: none;
-    }
   }
- 
+
+  button {
+    width: 184px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #0290ff;
+    color: #fff;
+    border: none;
+  }
 }
 
 table {
@@ -138,4 +208,30 @@ table {
       }
     }
   }
+}
+
+select {
+  padding-left: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.15px;
+    color: #c4c4c4;
+
+  >:nth-child(n+2) {
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.15px;
+    color: black;
+  }
+}
+
+.toggle {
+  color: black;
 }
