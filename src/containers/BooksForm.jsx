@@ -10,30 +10,24 @@ class BookForm extends Component {
     super(props);
     this.state = { title: '', category: 'Action' };
 
-    this.inputHandleChange = this.inputHandleChange.bind(this);
-    this.selectHandleChange = this.selectHandleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    const { props: { createBook }, state: { title, category } } = this;
-    const input = document.getElementsByName('title')[0];
-    input.value = '';
     e.preventDefault();
+    const { props: { createBook }, state: { title, category } } = this;
     const book = {
       id: Math.random().toString(),
       title,
       category,
     };
     createBook(book);
+    this.setState({ title: '' });
   }
 
-  inputHandleChange(event) {
-    this.setState({ title: event.target.value });
-  }
-
-  selectHandleChange(event) {
-    this.setState({ category: event.target.value });
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -43,13 +37,13 @@ class BookForm extends Component {
         <div className="form-group">
           <label htmlFor="title">
             Title:
-            <input type="text" value={title} onChange={this.inputHandleChange} name="title" />
+            <input type="text" value={title} onChange={this.handleChange} name="title" />
           </label>
         </div>
         <div className="form-group">
           <label htmlFor="categories">
             Categories:
-            <select name="categories" onChange={e => this.selectHandleChange(e)}>
+            <select name="category" onChange={e => this.handleChange(e)}>
               {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
             </select>
           </label>
