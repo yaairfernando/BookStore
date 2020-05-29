@@ -11,7 +11,6 @@ class BookForm extends Component {
     this.state = { title: '', category: 'Action' };
 
     this.handleChange = this.handleChange.bind(this);
-    this.selectHandleChange = this.selectHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -28,11 +27,7 @@ class BookForm extends Component {
   }
 
   handleChange(event) {
-    this.setState({ title: event.target.value });
-  }
-
-  selectHandleChange(event) {
-    this.setState({ category: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -48,7 +43,7 @@ class BookForm extends Component {
         <div className="form-group">
           <label htmlFor="categories">
             Categories:
-            <select name="categories" onChange={e => this.selectHandleChange(e)}>
+            <select name="category" onChange={e => this.handleChange(e)}>
               {categories.map(c => <option key={`select-${c}`} value={c}>{c}</option>)}
             </select>
           </label>
