@@ -163,6 +163,11 @@ table {
   tbody {
     display: flex;
     flex-direction: column;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
     
     tr {
       border-radius: 4px;
@@ -173,9 +178,11 @@ table {
       padding: 20px;
       height: 170px;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
       align-items: flex-start;
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       th:first-child {
         display: none;
@@ -195,8 +202,18 @@ table {
         font-size: 14px;
       }
 
+      th.button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .button {
-        margin-top: auto;
+        width: 184px;
+        height: 45px;
+        border-radius: 3px;
+        background-color: #0290ff;
+        border: none;
 
         button {
           width: 54px;
@@ -208,7 +225,7 @@ table {
           font-style: normal;
           line-height: normal;
           letter-spacing: normal;
-          color: #4386bf;
+          color: #fff;;
           border: none;
           background: none;
           outline: none;
