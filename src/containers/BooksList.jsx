@@ -12,6 +12,9 @@ class BookList extends Component {
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
   }
 
+  componentDidMount() {
+  }
+
   handleRemoveBook(book) {
     const { props: { removeBook } } = this;
     removeBook(book);
@@ -27,7 +30,7 @@ class BookList extends Component {
       return book;
     });
     return (
-      <div>
+      <div className="main">
         <CategoryFilter />
         <table>
           <thead>

@@ -5,10 +5,12 @@ const Book = ({ handleRemoveBook, book }) => {
   const { id, title, category } = book;
   return (
     <tr>
-      <th>{id}</th>
-      <th>{title}</th>
-      <th>{category}</th>
-      <th>
+      <div className="content">
+        <th className="id">{id}</th>
+        <th className="title">{title}</th>
+        <th className="category">{category}</th>
+      </div>
+      <th className="button">
         <button onClick={() => handleRemoveBook(book)} type="button">Delete</button>
       </th>
     </tr>
